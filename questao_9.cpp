@@ -35,19 +35,24 @@ float mediaGeral(float m[], int a) {
 }
 
 int main() {
-    int alunos = 15;
+    int alunos = 5;
     string nomes[alunos];
     float notas1[alunos], notas2[alunos], medias[alunos];
 
-    for(int i = 0; i < alunos; i++)  {
+    for(int i = 0; i < alunos; i++) {
         cout << endl << "ALUNO " << i+1 << ": " << endl;
         cout << "Nome: ";
         getline(cin, nomes[i]);
+
         cout << "Nota na Prova 1: ";
         cin >> notas1[i];
+
         cout << "Nota na Prova 2: ";
         cin >> notas2[i];
-        medias[i] = (notas1[i] + notas2[i])/2.0;
+
+        medias[i] = (notas1[i] + notas2[i]) / 2.0;
+
+        cin.ignore();
     }
 
     imprimir(nomes, notas1, notas2, medias, alunos);
