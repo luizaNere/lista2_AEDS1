@@ -55,6 +55,6 @@ int main() {
         cin.ignore();
     }
 
-    imprimir(nomes, notas1, notas2, medias, alunos);
+    imprimir(nomes, notas1, notas2, medias, alunos); //lalalalalal
     cout << endl << "Média geral da turma = " << mediaGeral(medias, alunos) << endl;
 }
