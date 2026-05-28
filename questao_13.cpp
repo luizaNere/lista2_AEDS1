@@ -2,39 +2,42 @@
 #include <iomanip>
 using namespace std;
 
-void preencher(int matriz[2][2]) {
-    int valor;
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < 2; j++) {
-            cout << endl << "[" << i+1 << "][" << j+1 << "] = ";
-            cin >> valor;
-            matriz[i][j] = valor;
+void preencherMatriz(int mat[2][2], char nome) {
+    cout << "Preencha a matriz " << nome << " (2x2):\n";
+    for (int i = 0; i < 2; i++)
+        for (int j = 0; j < 2; j++) {
+            cout << nome << "[" << i << "][" << j << "]: ";
+            cin >> mat[i][j];
         }
-    }
 }
 
-void produto(int a[2][2], int b[2][2], int produto[2][2]) {
-    for (int i = 0; i < 2; i++) {
+void produtoCruzado(int A[2][2], int B[2][2], int C[2][2]) {
+    for (int i = 0; i < 2; i++)
         for (int j = 0; j < 2; j++) {
-            produto[i][j] = a[i][j] * b[i][j];
+            C[i][j] = 0;
+            for (int k = 0; k < 2; k++)
+                C[i][j] += A[i][k] * B[k][j];
         }
+}
+
+void imprimirMatriz(int mat[2][2], const char* nome) {
+    cout << "\nMatriz " << nome << ":\n";
+    for (int i = 0; i < 2; i++) {
+        cout << "| ";
+        for (int j = 0; j < 2; j++)
+            cout << setw(5) << mat[i][j] << " | ";
+        cout << "\n";
     }
 }
 
 int main() {
-    int A[2][2], B[2][2], P[2][2];
-    cout << endl << "Matriz A:" << endl;
-    preencher(A);
-    cout << endl << "Matriz B:" << endl;
-    preencher(B);
+    int A[2][2], B[2][2], C[2][2];
 
-    produto(A, B, P);
+    preencherMatriz(A, 'A');
+    preencherMatriz(B, 'B');
+    produtoCruzado(A, B, C);
 
-    cout << endl << "Matriz C: A * B" << endl;
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < 2; j++) {
-            cout << setw(3) << P[i][j];
-        }
-        cout << endl;
-    }
+    imprimirMatriz(A, "A");
+    imprimirMatriz(B, "B");
+    imprimirMatriz(C, "C = A x B");
 }
